@@ -8,7 +8,7 @@ import java.util.List;
 record Pair(int left, int right){}
 
 void main() throws IOException{
-    BufferedReader br = new BufferedReader (new FileReader(".\\Day1\\src\\Test\\test2.txt"));
+    BufferedReader br = new BufferedReader (new FileReader(".\\AdventOfCode2024\\Day1\\src\\Test\\test2.txt"));
     List<Integer> left = new ArrayList<Integer>();
     List<Integer> right = new ArrayList<Integer>();
     
@@ -32,9 +32,7 @@ void main() throws IOException{
     long rez2 = 0;
     for (int i: left) {
         long a = right.stream().filter(r->r==i).count();
-        rez2 = rez2 + a*i;
-        System.out.println(a);
-        
+        rez2 = rez2 + a*i;        
     }
     System.out.println("Answer 2: " + rez2);
 }
