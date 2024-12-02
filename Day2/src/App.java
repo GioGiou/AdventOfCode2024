@@ -2,12 +2,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class App {
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader (new FileReader(".\\AdventOfCode2024\\Day2\\src\\Test\\test2.txt"));
         int rez1 =0;
+        int rez2 =0;
         while(br.ready()){
             String line = br.readLine();
             String[] split = line.split(" ");
@@ -25,6 +29,7 @@ public class App {
                 }
                 if(flag){
                     rez1++;
+                    continue;
                 }
             }
             if(nums[0]<nums[1]&&nums[1]<=3+nums[0]){
@@ -37,60 +42,51 @@ public class App {
                 }
                 if(flag){
                     rez1++;
+                    continue;
                 }
+                
             }
+            boolean bra=false;
+            System.out.print(line);
+            for (int i = 0; i < nums.length; i++) {
+                List<Integer> list =Arrays.stream(nums).boxed() .collect(Collectors.toList());
+                list.remove(i);
+                if(list.get(0)>list.get(1)&&list.get(0)<=3+list.get(1)){
+                    boolean flag = true;
+                    for (int j = 1; j < list.size(); j++) {
+                        if(!(list.get(j-1)>list.get(j)&&list.get(j-1)<=3+list.get(j))){
+                            flag=false;
+                            break;
+                        }
+                    }
+                    if(flag){
+                        rez2++;
+                        bra = true;
+                        System.out.println(" --");
+                    }
+                }
+                if(bra) break;
+                if(list.get(0)<list.get(1)&&list.get(1)<=3+list.get(0)){
+                    boolean flag = true;
+                    for (int j = 1; j < list.size(); j++) {
+                        if(!(list.get(j-1)<list.get(j)&&list.get(j)<=3+list.get(j-1))){
+                            flag=false;
+                        }
+                    }
+                    if(flag){
+                        System.out.println(" --");
+                        rez2++;
+                        bra = true;
+                    }
+                    
+                }
+                if(bra) break;                
+            }
+            System.out.println();
+
         }
         System.out.println("Answer 1: "+rez1);
-        br = new BufferedReader (new FileReader(".\\AdventOfCode2024\\Day2\\src\\Test\\test1.txt"));
-        int rez2 =0;
-        while(br.ready()){
-            String line = br.readLine();
-            String[] split = line.split(" ");
-            ArrayList<Integer> list = new ArrayList<>();
-            for (int i = 0; i < split.length; i++) {
-                list.add(Integer.parseInt(split[i]));
-            }
-            list.sort(Comparator.naturalOrder());
-            boolean remove = false;
-            boolean bra = false;
-            for (int i = 1; i <list.size(); i++) {
-                if(3+list.get(i-1)>=list.get(i)){}
-                else{
-                    if(remove){
-                        bra=true;
-                        break;
-                    }
-                    remove=true;
-                    list.remove(i);
-                }
-            }
-            if(!bra){
-                rez2++;
-                continue;
-            }
-            list = new ArrayList<>();
-            for (int i = 0; i < split.length; i++) {
-                list.add(Integer.parseInt(split[i]));
-            }
-            list.sort(Comparator.reverseOrder());
-            bra=false;
-            remove=false;
-            for (int i = 1; i <list.size(); i++) {
-                if(3+list.get(i)>=list.get(i-1)){}
-                else{
-                    if(remove){
-                        bra=true;
-                        break;
-                    }
-                    remove=true;
-                    list.remove(i);
-                }
-            }
-            if(!bra){
-                rez2++;
-                continue;
-            }
-        }
-        System.out.println("Answer 2: "+rez2);
+        
+        System.out.println("Answer 2: "+(rez2+rez1));
     }
 }
