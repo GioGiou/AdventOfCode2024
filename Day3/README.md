@@ -1,4 +1,4 @@
-# Problem Dneva 2
+# Problem Dneva 3
 
 Rešen dneva 3. 12. 2024
 
