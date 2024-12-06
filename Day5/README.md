@@ -4,7 +4,7 @@ Rešen dneva 5. 12. 2024
 
 Začetek: 9:45
 
-Konec: 9:55 1. del, 10:03
+Konec: 9:55 1. del, 10:03 2. del
 
 # Rang
 
