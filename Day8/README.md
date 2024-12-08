@@ -4,10 +4,10 @@ Rešen dne 8. 12. 2024
 
 Začetek: 10:17
 
-Konec: 10:51 1. del, 
+Konec: 10:50 1. del, 11:24 2. del 
 
 # Rang
 
-Part 1: 12088
+Part 1: 18584
 
-Part 2: 10834
+Part 2: 18007
